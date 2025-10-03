@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url":
+    "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_migration_australia.csv"
   },
   "width": 800,
   "height": 450,
   "transform": [
-    {"window": [{"op": "sum", "field": "amount", "as": "sum"}]},
-    {"window": [{"op": "lead", "field": "label", "as": "lead"}]},
+    {"window": [{"op": "sum", "field": "Sum", "as": "sum"}]},
+    {"window": [{"op": "lead", "field": "Year", "as": "lead"}]},
     {
       "calculate": "datum.lead === null ? datum.label : datum.lead",
       "as": "lead"
