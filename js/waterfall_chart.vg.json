@@ -6,10 +6,10 @@
   "width": 800,
   "height": 450,
   "transform": [
-    {"window": [{"op": "sum", "field": "Sum", "as": "sum"}]},
+    {"window": [{"op": "sum", "field": "Count", "as": "sum"}]},
     {"window": [{"op": "lead", "field": "Year", "as": "lead"}]},
     {
-      "calculate": "datum.lead === null ? datum.label : datum.lead",
+      "calculate": "datum.lead === null ? datum.Year : datum.lead",
       "as": "lead"
     },
     {
