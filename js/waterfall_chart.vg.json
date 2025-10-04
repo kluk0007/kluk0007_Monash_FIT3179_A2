@@ -1,42 +1,42 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_migration_australia.csv"
   },
   "width": 800,
   "height": 450,
   "transform": [
-    {"window": [{"op": "sum", "field": "Count", "as": "sum"}]},
-    {"window": [{"op": "lead", "field": "Year", "as": "lead"}]},
+    {"window": [{"op": "lag", "field": "count", "as": "previous_count"}]},
+    {"window": [{"op": "lead", "field": "year", "as": "lead"}]},
     {
-      "calculate": "datum.lead === null ? datum.Year : datum.lead",
-      "as": "lead"
+      "calculate": "datum.lead === null ? datum.label : datum.lead", "as": "lead"
     },
     {
-      "calculate": "datum.label === 'End' ? 0 : datum.sum - datum.amount",
-      "as": "previous_sum"
+      "calculate": "isValid(datum.previous_count) ? datum.count - datum.previous_count : 0", "as": "amount"
     },
     {
-      "calculate": "datum.label === 'End' ? datum.sum : datum.amount",
-      "as": "amount"
+      "calculate": "datum.count", "as": "sum"
+    },
+    {
+      "calculate": "datum.previous_count", "as": "previous_sum"
     },
     {
       "calculate": "(datum.label !== 'Begin' && datum.label !== 'End' && datum.amount > 0 ? '+' : '') + datum.amount",
       "as": "text_amount"
     },
-    {"calculate": "(datum.sum + datum.previous_sum) / 2", "as": "center"}
+    {"calculate": "(datum.count + datum.previous_count) / 2", "as": "center"}
   ],
   "encoding": {
     "x": {
-      "field": "label",
+      "field": "year",
       "type": "ordinal",
       "sort": null,
-      "axis": {"labelAngle": 0, "title": "Months"}
+      "axis": {"labelAngle": 0, "title": "Years"}
     }
   },
   "layer": [
     {
-      "mark": {"type": "bar", "size": 45},
+      "mark": {"type": "bar", "size": 20},
       "encoding": {
         "y": {
           "field": "previous_sum",
@@ -61,9 +61,9 @@
         "type": "rule",
         "color": "#404040",
         "opacity": 1,
-        "strokeWidth": 2,
-        "xOffset": -22.5,
-        "x2Offset": 22.5
+        "strokeWidth": 1,
+        "xOffset": -10,
+        "x2Offset": 10
       },
       "encoding": {
         "x2": {"field": "lead"},
