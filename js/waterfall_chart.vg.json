@@ -9,7 +9,7 @@
     {"window": [{"op": "lag", "field": "count", "as": "previous_count"}]},
     {"window": [{"op": "lead", "field": "year", "as": "lead"}]},
     {
-      "calculate": "datum.lead === null ? datum.label : datum.lead", "as": "lead"
+      "calculate": "datum.lead === null ? datum.year : datum.lead", "as": "lead"
     },
     {
       "calculate": "isValid(datum.previous_count) ? datum.count - datum.previous_count : 0", "as": "amount"
@@ -19,10 +19,6 @@
     },
     {
       "calculate": "datum.previous_count", "as": "previous_sum"
-    },
-    {
-      "calculate": "(datum.label !== 'Begin' && datum.label !== 'End' && datum.amount > 0 ? '+' : '') + datum.amount",
-      "as": "text_amount"
     },
     {"calculate": "(datum.count + datum.previous_count) / 2", "as": "center"}
   ],
@@ -43,14 +39,14 @@
           "type": "quantitative",
           "title": "Amount"
         },
-        "y2": {"field": "sum"},
+        "y2": {"field": "count"},
         "color": {
           "condition": [
             {
-              "test": "datum.label === 'Begin' || datum.label === 'End'",
+              "test": "datum.year === '2000' || datum.year === '2024'",
               "value": "#f7e0b6"
             },
-            {"test": "datum.sum < datum.previous_sum", "value": "#f78a64"}
+            {"test": "datum.count < datum.previous_count", "value": "#f78a64"}
           ],
           "value": "#93c4aa"
         }
@@ -67,7 +63,7 @@
       },
       "encoding": {
         "x2": {"field": "lead"},
-        "y": {"field": "sum", "type": "quantitative"}
+        "y": {"field": "count", "type": "quantitative"}
       }
     },
     {
