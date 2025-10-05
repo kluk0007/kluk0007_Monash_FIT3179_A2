@@ -16,12 +16,14 @@
 {
   "id":4,
   "name":"New Zealand Citizens",
-  "parent":1
+  "parent":1,
+  "size":51100
 },
 {
   "id":5,
   "name":"Australian Citizens",
-  "parent":1
+  "parent":1,
+  "size":60000
 },
 {
   "id":6,
@@ -58,5 +60,35 @@
   "name":"Student - Higher Education",
   "parent":3,
   "size":147500
+},
+{
+  "id":12,
+  "name":"Student - Other",
+  "parent":3,
+  "size":39400
+},
+{
+  "id":13,
+  "name":"Skilled (Temporary)",
+  "parent":3,
+  "size":48800
+},
+{
+  "id":14,
+  "name":"Working Holiday",
+  "parent":3,
+  "size":79600
+},
+{
+  "id":15,
+  "name":"Visitors",
+  "parent":3,
+  "size":90000
+},
+{
+  "id":16,
+  "name":"Other (Temporary)",
+  "parent":3,
+  "size":39600
 }
 ]
