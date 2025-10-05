@@ -43,27 +43,13 @@
         "color": {
           "condition": [
             {
-              "test": "datum.year === '2000' || datum.year === '2024'",
-              "value": "#f7e0b6"
+              "test": "datum.year === '2000' || datum.year === 'End'",
+              "value": "#90c3f5"
             },
             {"test": "datum.count < datum.previous_count", "value": "#f78a64"}
           ],
           "value": "#93c4aa"
         }
-      }
-    },
-    {
-      "mark": {
-        "type": "rule",
-        "color": "#404040",
-        "opacity": 1,
-        "strokeWidth": 1,
-        "xOffset": -10,
-        "x2Offset": 10
-      },
-      "encoding": {
-        "x2": {"field": "lead"},
-        "y": {"field": "count", "type": "quantitative"}
       }
     },
     {
