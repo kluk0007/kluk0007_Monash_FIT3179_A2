@@ -48,7 +48,7 @@
             },
             {"test": "datum.count < datum.previous_count", "value": "#f78a64"}
           ],
-          "value": "#93c4aa"
+          "value": "#b2d5f7"
         }
       }
     },
