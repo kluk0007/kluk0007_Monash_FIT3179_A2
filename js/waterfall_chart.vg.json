@@ -44,11 +44,11 @@
           "condition": [
             {
               "test": "datum.year === '2000' || datum.year === 'End'",
-              "value": "#90c3f5"
+              "value": "#b2d5f7"
             },
             {"test": "datum.count < datum.previous_count", "value": "#f78a64"}
           ],
-          "value": "#b2d5f7"
+          "value": "#93c4aa"
         }
       }
     },
