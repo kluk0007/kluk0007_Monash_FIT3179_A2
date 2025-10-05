@@ -37,7 +37,7 @@
         "y": {
           "field": "previous_sum",
           "type": "quantitative",
-          "title": "Amount"
+          "title": "Amount x1,000"
         },
         "y2": {"field": "count"},
         "color": {
