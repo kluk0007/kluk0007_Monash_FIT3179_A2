@@ -14,20 +14,21 @@
 
 <script type="text/javascript">
 
-  var spec2 = "js/waterfall_chart.vg.json";
-  vegaEmbed('#waterfall_chart', spec2).then(function(result) {
+  var vis_1 = "js/waterfall_chart.vg.json";
+  vegaEmbed('#waterfall_chart', vis_1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
+
+  var vis_2 = "js/treemap.vg.json";
+  vegaEmbed('#treemap', vis_2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
 </script>
 
 <div id="treemap"></div>
 
 <script type="text/javascript">
-
-  var spec2 = "js/treemap.vg.json";
-  vegaEmbed('#treemap', spec2).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
 </script>
 
 </body>
