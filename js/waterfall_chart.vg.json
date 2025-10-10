@@ -48,7 +48,7 @@
         "color": {
           "condition": [
             {
-              "test": "datum.year === '2000' || datum.year === 'End'",
+              "test": "datum.year === '2000'",
               "value": "#4287f5"
             },
             {"test": "datum.amount < 0", "value": "#f5424b"}
