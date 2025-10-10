@@ -13,7 +13,7 @@
       "lookup": "properties.NAME",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/kluk0007/Monash_FIT3179_Homework_Week_10/refs/heads/main/data/estimated_resident_population_by_country_of_birth.csv"
+          "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_overseas_migration_all_states_year_ending.csv"
         },
         "key": "Country",
         "fields": ["pop_2024_percent"]
