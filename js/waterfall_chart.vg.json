@@ -20,7 +20,12 @@
     {
       "calculate": "datum.previous_count", "as": "previous_sum"
     },
-    {"calculate": "(datum.count + datum.previous_count) / 2", "as": "center"}
+    {
+      "calculate": "(datum.count + datum.previous_count) / 2", "as": "center"
+    },
+    {
+    "filter": "isValid(datum.previous_count) && isValid(datum.lead)"
+    }
   ],
   "encoding": {
     "x": {
@@ -37,18 +42,18 @@
         "y": {
           "field": "previous_sum",
           "type": "quantitative",
-          "title": "Amount x1,000"
+          "title": "Net Migration (Thousand People)"
         },
         "y2": {"field": "count"},
         "color": {
           "condition": [
             {
               "test": "datum.year === '2000' || datum.year === 'End'",
-              "value": "#b2d5f7"
+              "value": "#4287f5"
             },
-            {"test": "datum.count < datum.previous_count", "value": "#f78a64"}
+            {"test": "datum.amount < 0", "value": "#f5424b"}
           ],
-          "value": "#93c4aa"
+          "value": "#4287f5"
         }
       }
     },
