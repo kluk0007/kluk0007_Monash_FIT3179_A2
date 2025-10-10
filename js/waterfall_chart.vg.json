@@ -37,7 +37,7 @@
   },
   "layer": [
     {
-      "mark": {"type": "bar", "size": 20},
+      "mark": {"type": "bar", "size": 15},
       "encoding": {
         "y": {
           "field": "previous_sum",
