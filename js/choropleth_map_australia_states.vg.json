@@ -6,7 +6,7 @@
   "projection": {"type": "equalEarth"},
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/js/ne_1_australia.topojson",
-    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces."}
+    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
   },
   "transform": [
     {
