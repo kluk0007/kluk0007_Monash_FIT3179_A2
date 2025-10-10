@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
-
-  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-
-</head>
-<body>
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="vegalitevis.js"></script>
   
-<div id="waterfall_chart"></div>
-
-<script type="text/javascript">
-
-  var vis_1 = "js/waterfall_chart.vg.json";
-  vegaEmbed('#waterfall_chart', vis_1).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
-
-  var vis_2 = "js/treemap.vg.json";
-  vegaEmbed('#treemap', vis_2).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
   
-</script>
-
-<div id="treemap"></div>
-
-<script type="text/javascript">
-</script>
-
-</body>
+  </head>
+  
+  <body>
+    
+    <div id="waterfall_chart"></div>
+    
+    <div id="treemap"></div>
+  
+  </body>
+  
+  <script type="text/javascript">
+  
+    var vis_1 = "js/waterfall_chart.vg.json";
+    vegaEmbed('#waterfall_chart', vis_1).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  
+    var vis_2 = "js/treemap.vg.json";
+    vegaEmbed('#treemap', vis_2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    
+  </script>
+  
 </html>
