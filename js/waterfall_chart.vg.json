@@ -79,7 +79,74 @@
           "value": "white"
         }
       }
+    },
+    {
+  "data": {
+    "values": [
+      {
+        "year": "2008",
+        "y": 250,
+        "note": "2008: Global Financial Crisis",
+        "boxXOffset": -200,
+        "boxYOffset": -20
+      },
+      {
+        "year": "2020",
+        "y": 0,
+        "note": "2020: COVID-19 Border Closures",
+        "boxXOffset": -200,
+        "boxYOffset": -70
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#666",
+        "strokeWidth": 1,
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "x2": {"field": "year", "type": "ordinal", "offset": {"expr": "datum.boxXOffset"}},
+        "y2": {"field": "y", "type": "quantitative", "offset": {"expr": "datum.boxYOffset"}}
+      }
+    },
+    {
+      "mark": {
+        "type": "rect",
+        "color": "#bdbdbd",
+        "stroke": "#7b7b7b",
+        "strokeWidth": 0.8,
+        "cornerRadius": 4
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "offset": {"expr": "datum.boxXOffset"}},
+        "y": {"field": "y", "type": "quantitative", "offset": {"expr": "datum.boxYOffset"}},
+        "x2": {"field": "year", "type": "ordinal", "offset": {"expr": "datum.boxXOffset + 120"}},
+        "y2": {"field": "y", "type": "quantitative", "offset": {"expr": "datum.boxYOffset - 30"}}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": {"expr": "datum.boxXOffset + 8"},
+        "dy": {"expr": "datum.boxYOffset - 12"},
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#000000"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "note"}
+      }
     }
+  ]
+}
   ],
   "config": {"text": {"fontWeight": "bold", "color": "#404040"}}
 }
