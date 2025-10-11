@@ -34,7 +34,7 @@
     },
     "tooltip": [
       { "field": "properties.name", "title": "State" },
-      { "field": "value", "title": "Value" }
+      { "field": "Jun-14", "title": "Value" }
     ]
   }
 }
