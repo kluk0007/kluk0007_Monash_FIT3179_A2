@@ -11,25 +11,23 @@
     }
   },
   "transform": [
-    { "filter": "datum.properties.admin == 'Australia'" },
+    {"filter": "datum.properties.admin == 'Australia'"},
     {
       "lookup": "properties.name",
       "from": {
         "data": {
-          "values": [
-            { "state": "New South Wales", "value": 45 },
-            { "state": "Victoria", "value": 60 },
-            { "state": "Queensland", "value": 30 },
-            { "state": "Western Australia", "value": 50 },
-            { "state": "South Australia", "value": 40 },
-            { "state": "Tasmania", "value": 25 },
-            { "state": "Northern Territory", "value": 20 },
-            { "state": "Australian Capital Territory", "value": 70 }
-          ]
+          "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_overseas_migration_all_states_year_ending.csv",
+          "format": {"type": "csv"}
         },
-        "key": "state",
-        "fields": ["value"]
+        "key": "state_full",
+        "fields": ["value", "Time"]
       }
+    },
+    {
+      "fold": ["NSW", "Vic", "Qld", "WA", "SA", "Tas", "NT", "ACT"], "as": ["state_abbreviation", "value"]},
+    {
+      "calculate": "datum.state_abbreviation == 'NSW' ? 'New South Wales' : datum.state_abbreviation == 'Vic' ? 'Victoria' : datum.state_abbreviation == 'Qld' ? 'Queensland' : datum.state_abbreviation == 'WA' ? 'Western Australia' : datum.state_abbreviation == 'SA' ? 'South Australia' : datum.state_abbreviation == 'Tas' ? 'Tasmania' : datum.state_abbreviation == 'NT' ? 'Northern Territory' : datum.state_abbreviation == 'ACT' ? 'Australian Capital Territory' : null",
+      "as": "state_full"
     }
   ],
   "projection": { "type": "mercator" },
