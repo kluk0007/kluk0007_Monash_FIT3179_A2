@@ -24,6 +24,8 @@
     <div id="choropleth_map"></div>
     
     <div id="waterfall_chart"></div>
+
+    <div id="population_pyramid"></div>
     
     <div id="treemap"></div>
   
@@ -43,6 +45,11 @@
 
     var vis_3 = "js/choropleth_map_australia_states.vg.json";
     vegaEmbed('#choropleth_map', vis_3, {mode: "vega-lite", loader: {target: "vega-lite"}, actions: false}).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var vis_4 = "js/population_pyramid.vg.json";
+    vegaEmbed('#population_pyramid', vis_4).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
     
