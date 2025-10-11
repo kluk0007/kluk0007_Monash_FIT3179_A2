@@ -21,20 +21,33 @@
         "key": "States",
         "fields": ["Jun-14"]
       }
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "Jun-14",
+          "as": "total_value"
+        }
+      ]
+    },
+    {
+      "calculate": "(datum['Jun-14'] / datum.total_value) * 100",
+      "as": "percent_value"
     }
   ],
   "projection": { "type": "mercator" },
   "mark": { "type": "geoshape", "stroke": "white" },
   "encoding": {
     "color": {
-      "field": "Jun-14",
+      "field": "percent_value",
       "type": "quantitative",
-      "title": "Example Value",
+      "title": "Percentage (%)",
       "scale": { "scheme": "blues" }
     },
     "tooltip": [
       { "field": "properties.name", "title": "State" },
-      { "field": "Jun-14", "title": "Value" }
+      { "field": "percent_value", "title": "Percentage", "format": ".2f" }
     ]
   }
 }
