@@ -1,0 +1,77 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Amount of Overseas Migrant Arrivals (Thousand People) by Age Group, Gender, and Year Period",
+  "width": 500,
+  "height": 500,
+  "data": { "url": "https://raw.githubusercontent.com/kluk0007/Monash_FIT3179_Homework_Week_10/refs/heads/main/data/overseas_migrant_arrivals_age_and_sex.csv" },
+  "params": [
+    {
+      "name": "selectedYear",
+      "value": "2018-2019",
+      "bind": {
+        "input": "select",
+        "options": ["2018-2019", "2022-2023", "2023-2024"],
+        "labels": ["2018-2019", "2022-2023", "2023-2024"],
+        "name": "Select Year: "
+      }
+    },
+    {
+      "name": "selectedGender",
+      "value": "Males",
+      "bind": {
+        "input": "select",
+        "options": ["Males", "Females"],
+        "labels": ["Males", "Females"],
+        "name": "Select Sex: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "calculate": "datum.Age == '100+' ? 100 : toNumber(datum.Age)",
+      "as": "AgeNum"
+    },
+    {
+      "calculate": "datum.AgeNum >= 100 ? '100+' : (floor(datum.AgeNum / 10) * 10 + '-' + (floor(datum.AgeNum / 10) * 10 + 9))",
+      "as": "AgeGroup"
+    },
+    {
+      "fold": ["2018-2019 Males Thousand", "2018-2019 Females Thousand", "2022-2023 Males Thousand", "2022-2023 Females Thousand", "2023-2024 Males Thousand", "2023-2024 Females Thousand"],
+      "as": ["Category", "Count"]
+    },
+    {
+      "calculate": "trim(split(datum.Category, ' ')[0])", "as": "Year"
+  },
+  { 
+      "calculate": "trim(split(datum.Category, ' ')[1])", "as": "Gender"
+  },
+  {
+    "filter": "datum.Year == selectedYear && datum.Gender == selectedGender"
+  }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "AgeGroup",
+      "type": "ordinal",
+      "title": "Age Groups",
+      "sort": [
+        "0-9", "10-19", "20-29", "30-39", "40-49",
+        "50-59", "60-69", "70-79", "80-89", "90-99", "100+"
+      ],
+      "axis": {"labelAngle": -90}
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Count",
+      "title": "Overseas Migrant Arrivals (Thousand People)",
+      "scale": {"domain": [0, 180]}
+    },
+    "tooltip": [
+      {"aggregate": "sum", "field": "Count", "type": "quantitative", "format": "", "title": "Overseas Migrant Arrivals (Thousand People)"},
+      {"field": "Gender", "type": "nominal", "title": "Sex"}, {"field": "AgeGroup", "type": "ordinal", "title": "Age Group (Years Old)"},
+      {"field": "Year", "type": "ordinal", "title": "Year Period"}],
+    "color": {"field": "Gender", "type": "nominal", "scale": {"domain": ["Males", "Females"], "range": ["#156ab0", "#f58d05"]}, "legend": {
+        "title": "Sex"}}
+  }
+}
