@@ -1,5 +1,7 @@
 .title_heading {
-	text-align: center;
+	font-size: 30px;
+	width:500px;
+	text-align: left;
 }
 
 #waterfall_chart {
