@@ -11,6 +11,10 @@
 	padding-top:40px;
 }
 
+.title_intro {
+	width: 500px;
+}
+
 #waterfall_chart {
 	top:100px;
 	bottom: 100px; 
