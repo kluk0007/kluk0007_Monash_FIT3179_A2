@@ -1,3 +1,8 @@
+.header_container {
+	display: flex;
+	
+}
+
 .title_heading {
 	font-size: 50px;
 	width: 500px;
