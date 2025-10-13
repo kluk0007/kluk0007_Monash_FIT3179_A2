@@ -82,6 +82,7 @@
       "legend": {"title": "Sex"}
     },
     "tooltip": [
+      {"field": "Year", "type": "nominal", "title":"Year Period"},
       {
         "aggregate": "sum",
         "field": "Count",
@@ -89,8 +90,7 @@
         "title": "Overseas Migrant Arrivals (Thousand People)"
       },
       {"field": "Gender", "type": "nominal"},
-      {"field": "AgeGroup", "type": "ordinal"},
-      {"field": "Year", "type": "nominal"}
+      {"field": "AgeGroup", "type": "ordinal", "title":"Age Group"}
     ]
   },
   "mark": "bar"
