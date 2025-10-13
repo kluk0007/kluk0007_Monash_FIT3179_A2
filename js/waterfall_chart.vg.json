@@ -55,7 +55,12 @@
             {"test": "datum.amount < 0", "value": "#f5424b"}
           ],
           "value": "#4287f5"
-        }
+        },
+        "tooltip": [
+          {"field": "year", "type": "nominal", "title": "Year"},
+          {"field": "count", "type": "quantitative", "title": "Net Migration (Thousand People)"},
+          {"field": "amount", "type": "quantitative", "title": "Change from Previous Year (Thousand People)"}
+        ]
       }
     },
     {
