@@ -17,6 +17,7 @@
 }
 
 #header_hr {
+	display: flex;
 	color: #0056a6;
 	height: 2px;
 	padding-left: 100px;
