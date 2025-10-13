@@ -16,6 +16,13 @@
 	padding-top: 20px;
 }
 
+#header_hr {
+	color: #0056a6;
+	height: 2px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
 #summary_waterfall_chart {
 	padding-left: 100px;
 	width: 300px;
