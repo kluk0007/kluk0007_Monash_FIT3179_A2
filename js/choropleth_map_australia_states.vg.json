@@ -62,10 +62,10 @@
       "scale": {"range":["#ff4a4a", "#ffffff", "#3da5ff"], "domain":[-50, 0, 50]}
     },
     "tooltip": [
+      {"field": "Month", "title": "Month-Year"},
       {"field": "properties.name", "title": "State"},
       {"field": "Value", "title": "Net Migration (Thousand People"},
-      {"field": "percent_value", "title": "Percentage", "format": ".2f"},
-      {"field": "Month", "title": "Month-Year"}
+      {"field": "percent_value", "title": "Percentage", "format": ".2f"}
     ]
   }
 }
