@@ -1,4 +1,5 @@
 {
+  "title": "Australia's Net Migration from 2000 to 2024",
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_migration_australia.csv"
