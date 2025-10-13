@@ -1,9 +1,20 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Population pyramid of overseas migrant arrivals in Australia (2018–2019)",
+  "description": "Population pyramid of overseas migrant arrivals in Australia by year",
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/overseas_migrant_arrivals_age_and_sex.csv"
   },
+  "params": [
+    {
+      "name": "yearSelection",
+      "value": "2018-2019",
+      "bind": {
+        "input": "select",
+        "options": ["2018-2019", "2022-2023", "2023-2024"],
+        "name": "Select Year: "
+      }
+    }
+  ],
   "transform": [
     {
       "calculate": "datum.Age == '100+' ? 100 : toNumber(datum.Age)",
@@ -33,11 +44,7 @@
       "as": "Gender"
     },
     {
-      "filter": "datum.Year == '2018-2019'"
-    },
-    {
-      "calculate": "datum.Gender == 'Males' ? -datum.Count : datum.Count",
-      "as": "CountSigned"
+      "filter": "datum.Year == yearSelection"
     }
   ],
   "spacing": 0,
