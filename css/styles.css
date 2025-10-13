@@ -26,10 +26,10 @@
 
 #waterfall_chart_container{
 	display: flex;
+	padding-left: 100px;
 }
 
 #summary_waterfall_chart {
-	padding-left: 100px;
 	width: 300px;
 }
 
