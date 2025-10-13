@@ -16,6 +16,11 @@
 	padding-top: 20px;
 }
 
+#summary_waterfall_chart {
+	padding-left: 100px;
+	width: 300px;
+}
+
 #summary_choropleth_map {
 	display: flex;
 	padding-left: 100px;
