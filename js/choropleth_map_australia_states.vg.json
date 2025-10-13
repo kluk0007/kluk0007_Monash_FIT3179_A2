@@ -2,16 +2,13 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 600,
   "height": 500,
-  "title": "Choropleth Map of Australian States",
+  "title": "Choropleth Map of Australian States (Time Slider)",
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/js/ne_1_australia.topojson",
-    "format": {
-      "type": "topojson",
-      "feature": "ne_10m_admin_1_states_provinces"
-    }
+    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
   },
   "transform": [
-    { "filter": "datum.properties.admin == 'Australia'" },
+    {"filter": "datum.properties.admin == 'Australia'"},
     {
       "lookup": "properties.name",
       "from": {
@@ -19,35 +16,53 @@
           "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_overseas_migration_all_states_year_ending_transposed.csv"
         },
         "key": "States",
-        "fields": ["Jun-14"]
+        "fields": [
+          "Jun-14","Sep-14","Dec-14","Mar-15","Jun-15",
+          "Sep-15","Dec-15","Mar-16","Jun-16"
+        ]
       }
     },
     {
-      "joinaggregate": [
-        {
-          "op": "sum",
-          "field": "Jun-14",
-          "as": "total_value"
-        }
-      ]
+      "fold": [
+        "Jun-14","Sep-14","Dec-14","Mar-15","Jun-15",
+        "Sep-15","Dec-15","Mar-16","Jun-16"
+      ],
+      "as": ["Month", "Value"]
     },
     {
-      "calculate": "(datum['Jun-14'] / datum.total_value) * 100",
-      "as": "percent_value"
+      "calculate": "['Jun-14','Sep-14','Dec-14','Mar-15','Jun-15','Sep-15','Dec-15','Mar-16','Jun-16'][monthIndex]",
+      "as": "selectedMonth"
+    },
+    {"filter": "datum.Month == datum.selectedMonth"},
+    {"joinaggregate": [{"op": "sum", "field": "Value", "as": "total_value"}]},
+    {"calculate": "(datum.Value / datum.total_value) * 100", "as": "percent_value"}
+  ],
+  "params": [
+    {
+      "name": "monthIndex",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "name": "Month Index: "
+      }
     }
   ],
-  "projection": { "type": "mercator" },
-  "mark": { "type": "geoshape", "stroke": "white" },
+  "projection": {"type": "mercator"},
+  "mark": {"type": "geoshape", "stroke": "white"},
   "encoding": {
     "color": {
       "field": "percent_value",
       "type": "quantitative",
       "title": "Percentage (%)",
-      "scale": { "scheme": "blues" }
+      "scale": {"scheme": "blues"}
     },
     "tooltip": [
-      { "field": "properties.name", "title": "State" },
-      { "field": "percent_value", "title": "Percentage", "format": ".2f" }
+      {"field": "properties.name", "title": "State"},
+      {"field": "percent_value", "title": "Percentage", "format": ".2f"},
+      {"field": "Month", "title": "Month-Year"}
     ]
   }
 }
