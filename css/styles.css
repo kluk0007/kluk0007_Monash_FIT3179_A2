@@ -79,6 +79,16 @@ body {
 	justify-content: flex-end;
 }
 
+#population_pyramid_container {
+	display: flex;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+#population_pyramid_container_left {
+	
+}
+
 #treemap {
 	top:100px;
 	bottom: 100px; 
