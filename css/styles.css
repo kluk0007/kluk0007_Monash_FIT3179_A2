@@ -14,16 +14,19 @@ body {
 
 .title_heading {
 	font-size: 80px;
+	height: 230px;
 	width: 600px;
 	text-align: left;
 }
 
 .title_intro {
+	height: 230px;
 	width: 400px;
 	text-align: left;
 }
 
 .title_metadata {
+	height: 230px;
 	width: 400px;
 	text-align: right;
 }
