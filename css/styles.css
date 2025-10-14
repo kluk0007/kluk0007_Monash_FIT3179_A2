@@ -79,6 +79,14 @@ body {
 	justify-content: flex-end;
 }
 
+#population_pyramid_text {
+	display: flex;
+	text-align: center;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 100px;
+}
+
 #population_pyramid_container {
 	display: flex;
 	padding-left: 100px;
