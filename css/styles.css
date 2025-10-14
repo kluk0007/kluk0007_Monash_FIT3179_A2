@@ -79,7 +79,7 @@ body {
 	justify-content: flex-end;
 }
 
-#population_pyramid_text {
+#population_pyramid_intro {
 	display: flex;
 	text-align: center;
 	padding-left: 100px;
