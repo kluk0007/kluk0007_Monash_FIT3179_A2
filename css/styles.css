@@ -15,7 +15,7 @@ body {
 .title_heading {
 	font-size: 80px;
 	height: 230px;
-	width: 600px;
+	width: 500px;
 	text-align: left;
 	margin-top: 0px;
 }
@@ -24,7 +24,7 @@ body {
 	height: 230px;
 	width: 400px;
 	text-align: left;
-	padding-top: 20px;
+	padding-top: 25px;
 	margin-top: 0px;
 }
 
@@ -32,7 +32,7 @@ body {
 	height: 230px;
 	width: 400px;
 	text-align: right;
-	padding-top: 20px;
+	padding-top: 25px;
 	margin-top: 0px;
 }
 
