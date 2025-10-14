@@ -71,8 +71,8 @@ body {
 }
 
 #summary_choropleth_map {
-	padding-left: 100px;
-	margin-right: 0px;
+	padding-left: 50px;
+	padding-right: 20px;
 }
 
 #choropleth_map {
@@ -81,7 +81,7 @@ body {
 
 #population_pyramid_intro {
 	display: flex;
-	text-align: center;
+	align-items: center;
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 100px;
