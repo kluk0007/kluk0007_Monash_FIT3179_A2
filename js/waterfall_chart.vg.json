@@ -4,7 +4,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_migration_australia.csv"
   },
-  "width": 800,
+  "width": 750,
   "height": 450,
   "transform": [
     {"window": [{"op": "lag", "field": "count", "as": "previous_count"}]},
