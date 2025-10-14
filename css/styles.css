@@ -47,8 +47,10 @@ body {
 
 #waterfall_chart_container{
 	display: flex;
+	justify-content: space-between;
 	padding-left: 100px;
 	padding-right: 100px;
+	margin-right: 0px;
 }
 
 #summary_waterfall_chart {
