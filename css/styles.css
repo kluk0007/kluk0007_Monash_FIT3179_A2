@@ -57,10 +57,7 @@ body {
 }
 
 #waterfall_chart {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
+	justify-content: flex-end;
 }
 
 #choropleth_map_container{
@@ -76,7 +73,7 @@ body {
 }
 
 #choropleth_map {
-	padding-left: 100px;
+	justify-content: flex-end;
 }
 
 #treemap {
