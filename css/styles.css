@@ -17,18 +17,21 @@ body {
 	height: 230px;
 	width: 600px;
 	text-align: left;
+	margin-top: 0px;
 }
 
 .title_intro {
 	height: 230px;
 	width: 400px;
 	text-align: left;
+	margin-top: 0px;
 }
 
 .title_metadata {
 	height: 230px;
 	width: 400px;
 	text-align: right;
+	margin-top: 0px;
 }
 
 #header_hr {
