@@ -50,12 +50,13 @@ body {
 	justify-content: space-between;
 	padding-left: 100px;
 	padding-right: 100px;
+	padding-top: 100px;
+	margin-left: 0px;
 	margin-right: 0px;
 }
 
 #summary_waterfall_chart {
 	width: 300px;
-	padding-top: 90px;
 }
 
 #waterfall_chart {
