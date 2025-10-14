@@ -22,7 +22,7 @@ body {
 
 .title_intro {
 	height: 230px;
-	width: 400px;
+	width: 350px;
 	text-align: left;
 	padding-top: 25px;
 	margin-top: 0px;
@@ -30,8 +30,9 @@ body {
 
 .title_metadata {
 	height: 230px;
-	width: 400px;
+	width: 350px;
 	text-align: right;
+	vertical-align: middle;
 	padding-top: 25px;
 	margin-top: 0px;
 }
