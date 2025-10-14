@@ -65,13 +65,24 @@
           "field": "Count",
           "title": "Overseas Migrant Arrivals (Thousand People)",
           "axis": {"format": "s"},
-          "scale": {"reverse": true}
+          "scale": {"reverse": true, "domain":[0, 200]}
         },
         "color": {
           "field": "Gender",
           "scale": {"range": ["#1f77b4", "#ff7f0e"]},
           "legend": null
-        }
+        },
+        "tooltip": [
+          {"field": "Year", "type": "ordinal", "title": "Year Period"},
+          {"field": "Gender", "type": "nominal"},
+          {"field": "AgeGroup", "type": "ordinal", "title": "Age Group"},
+          {
+            "aggregate": "sum",
+            "field": "Count",
+            "type": "quantitative",
+            "title": "Overseas Migrant Arrivals (Thousand People)"
+          }
+        ]
       }
     },
     {
@@ -106,6 +117,7 @@
           "aggregate": "sum",
           "field": "Count",
           "title": "Overseas Migrant Arrivals (Thousand People)",
+          "scale": {"domain": [0, 200]},
           "axis": {"format": "s"}
         },
         "color": {
