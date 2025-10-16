@@ -81,6 +81,7 @@ body {
 
 #population_pyramid_intro {
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	padding-left: 100px;
 	padding-right: 100px;
