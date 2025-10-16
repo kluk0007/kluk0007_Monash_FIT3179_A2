@@ -108,6 +108,18 @@ body {
 	justify-content: center;
 }
 
+#area_chart_container {
+	display: flex;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 50px;
+}
+
+#summary_area_chart {
+	width: 300px;
+}
+
+
 #area_chart {
 	justify-content: flex-end;
 }
