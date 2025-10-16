@@ -94,7 +94,11 @@ body {
 }
 
 #population_pyramid_container_left {
-	
+	width: 300px;
+}
+
+#population_pyramid_container_right {
+	width: 300px;
 }
 
 #population_pyramid {
