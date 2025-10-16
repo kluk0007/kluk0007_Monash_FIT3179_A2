@@ -20,6 +20,10 @@
       "as": "Year"
     },
     {
+      "calculate": "{ 'Total permanent visas': 'Permanent Visa', 'Total temporary visas': 'Temporary Visa', 'New Zealand citizens (subclass 444)(c)': 'New Zealand Citizens', 'Australian citizens (no visa required)': 'Australian Citizens'}[datum['Visa groupings']]",
+      "as": "VisaGroupDisplay"
+    },
+    {
       "filter": {
         "field": "Visa groupings",
         "oneOf": [
@@ -30,6 +34,7 @@
         ]
       }
     },
+    
     {
       "joinaggregate": [
         {
@@ -55,12 +60,12 @@
       "title": "Number of Arrivals (Thousand People)"
     },
     "color": {
-      "field": "Visa groupings",
+      "field": "VisaGroupDisplay",
       "type": "nominal",
       "title": "Visa Group"
     },
     "tooltip": [
-      {"field": "Visa groupings", "title": "Visa Group"},
+      {"field": "Visa groupings", "title": "Visa Group Display"},
       {"field": "YearPeriod", "title": " Year Period"},
       {"field": "TotalValue", "type": "quantitative", "title": "Total Arrivals (All Groups, Thousand People)"},
       {"field": "Value", "type": "quantitative", "title": "Arrivals (Thousand People)"}
