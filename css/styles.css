@@ -98,16 +98,10 @@ body {
 	
 }
 
-#treemap {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
+#population_pyramid {
+	justify-content: center;
 }
 
-#population_pyramid {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
+#area_chart {
+	justify-content: flex-end;
 }
