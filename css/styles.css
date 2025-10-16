@@ -111,9 +111,12 @@ body {
 
 #area_chart_container {
 	display: flex;
+	justify-content: space-between;
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 50px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 #summary_area_chart {
