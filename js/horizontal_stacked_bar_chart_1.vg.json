@@ -1,46 +1,58 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Migrant Arrivals by Visa Groupings (Stacked by Year)",
+  "title": "Overseas Migrant Arrivals by Visa Grouping by Year Period",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 450,
+  "height": 250,
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/overseas_migrant_arrivals_by_visa_and_citizenship_groups.csv"
   },
-  "params": [
-    {
-      "name": "yearSelection",
-      "value": "2018-19",
-      "bind": {
-        "input": "select",
-        "options": ["2018-19", "2022-23", "2023-24"],
-        "name": "Select Year:"
-      }
-    }
-  ],
   "transform": [
     {
       "fold": ["2018-19", "2022-23", "2023-24"],
-      "as": ["Year", "Value"]
+      "as": ["YearPeriod", "Value"]
     },
     {
-      "filter": "datum.Year == yearSelection"
+      "calculate": "datum.YearPeriod == '2018-19' ? '2019' : datum.YearPeriod == '2022-23' ? '2023' : datum.YearPeriod == '2023-24' ? '2024' : null",
+      "as": "YearString"
+    },
+    {
+      "calculate": "toDate(datum.YearString)",
+      "as": "Year"
     },
     {
       "filter": {
-      "field": "Visa groupings",
-      "oneOf": ["Total permanent visas", "Total temporary visas", "New Zealand citizens (subclass 444)(c)", "Australian citizens (no visa required)"]
-  }
-}
+        "field": "Visa groupings",
+        "oneOf": [
+          "Total permanent visas",
+          "Total temporary visas",
+          "New Zealand citizens (subclass 444)(c)",
+          "Australian citizens (no visa required)"
+        ]
+      }
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "Value",
+          "as": "TotalValue"
+        }
+      ],
+      "groupby": ["YearPeriod"]
+    }
   ],
-  "mark": {"type": "bar"},
+  "mark": {"type": "area", "line": true, "point": true},
   "encoding": {
     "x": {
-      "aggregate": "sum",
-      "field": "Value",
-      "type": "quantitative",
-      "scale": {"domain": [0, 800]},
-      "title": "Number of Arrivals"
+      "field": "Year",
+      "type": "temporal",
+      "title": "Year (End of Annual Period)",
+      "timeUnit": "year"
     },
     "y": {
-      "axis": null
+      "aggregate": "sum",
+      "field": "Value",
+      "title": "Number of Arrivals (Thousand People)"
     },
     "color": {
       "field": "Visa groupings",
@@ -49,7 +61,9 @@
     },
     "tooltip": [
       {"field": "Visa groupings", "title": "Visa Group"},
-      {"field": "Value", "type": "quantitative", "title": "Arrivals"}
+      {"field": "YearPeriod", "title": " Year Period"},
+      {"field": "TotalValue", "type": "quantitative", "title": "Total Arrivals (All Groups, Thousand People)"},
+      {"field": "Value", "type": "quantitative", "title": "Arrivals (Thousand People)"}
     ]
   }
 }
