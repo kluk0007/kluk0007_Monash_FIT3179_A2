@@ -1,8 +1,8 @@
 {
+  "title": "Proportion of Migration Volume for Each State by Month and Year",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 450,
-  "title": "Choropleth Map of Australian States (Time Slider)",
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/js/ne_1_australia.topojson",
     "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
@@ -48,6 +48,10 @@
     {
       "calculate": "'Total long-term Net Migration (Thousand People): ' + datum.total_abs_value",
       "as": "total_abs_value_text"
+    },
+    {
+      "calculate": "format(datum.percent_value, '.2f') + '%'",
+      "as": "percent_label"
     }
   ],
   "params": [
@@ -78,7 +82,8 @@
           {"field": "Month", "title": "Month-Year"},
           {"field": "properties.name", "title": "State"},
           {"field": "Value", "title": "Net Migration (Thousand People)"},
-          {"field": "percent_value", "title": "Percentage", "format": ".2f"}
+          {"field": "percent_label", "title": "Percentage of Total Migration Volume"
+          }
         ]
       }
     },
