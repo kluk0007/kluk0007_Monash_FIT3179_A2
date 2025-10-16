@@ -125,7 +125,18 @@
           "field": "Gender",
           "scale": {"range": ["#1f77b4", "#ff7f0e"]},
           "legend": null
-        }
+        },
+        "tooltip": [
+          {"field": "Year", "type": "ordinal", "title": "Year Period"},
+          {"field": "Gender", "type": "nominal"},
+          {"field": "AgeGroup", "type": "ordinal", "title": "Age Group"},
+          {
+            "aggregate": "sum",
+            "field": "Count",
+            "type": "quantitative",
+            "title": "Overseas Migrant Arrivals (Thousand People)"
+          }
+        ]
       }
     }
   ],
