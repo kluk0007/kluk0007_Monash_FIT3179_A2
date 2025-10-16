@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Migrant Arrivals by Visa Groupings (Stacked by Year)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/overseas_migrant_arrivals_by_visa_and_citizenship_groups.csv"
+  },
+  "params": [
+    {
+      "name": "yearSelection",
+      "value": "2018-19",
+      "bind": {
+        "input": "select",
+        "options": ["2018-19", "2022-23", "2023-24"],
+        "name": "Select Year:"
+      }
+    }
+  ],
+  "transform": [
+    {
+      "fold": ["2018-19", "2022-23", "2023-24"],
+      "as": ["Year", "Value"]
+    },
+    {
+      "filter": "datum.Year == yearSelection"
+    },
+    {
+      "filter": {
+      "field": "Visa groupings",
+      "oneOf": ["Total permanent visas", "Total temporary visas", "New Zealand citizens (subclass 444)(c)", "Australian citizens (no visa required)"]
+  }
+}
+  ],
+  "mark": {"type": "bar"},
+  "encoding": {
+    "x": {
+      "aggregate": "sum",
+      "field": "Value",
+      "type": "quantitative",
+      "scale": {"domain": [0, 800]},
+      "title": "Number of Arrivals"
+    },
+    "y": {
+      "axis": null
+    },
+    "color": {
+      "field": "Visa groupings",
+      "type": "nominal",
+      "title": "Visa Group"
+    },
+    "tooltip": [
+      {"field": "Visa groupings", "title": "Visa Group"},
+      {"field": "Value", "type": "quantitative", "title": "Arrivals"}
+    ]
+  }
+}
