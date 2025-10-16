@@ -91,14 +91,17 @@ body {
 	display: flex;
 	padding-left: 100px;
 	padding-right: 100px;
+	padding-top: 100px;
 }
 
 #population_pyramid_text_left {
+	justify-content: flex-start;
 	width: 300px;
 }
 
 #population_pyramid_text_right {
 	width: 300px;
+	justify-content: flex-end;
 }
 
 #population_pyramid {
