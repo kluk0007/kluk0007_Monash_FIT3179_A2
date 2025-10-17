@@ -79,6 +79,21 @@ body {
 	justify-content: flex-end;
 }
 
+#dual_direction_bar_chart_container{
+	display: flex;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 100px;
+}
+
+#summary_dual_direction_bar_chart {
+	padding-left: 50px;
+	padding-right: 20px;
+}
+
+#dual_direction_bar_chart{
+}
+
 #population_pyramid_intro {
 	justify-content: center;
 	text-align: center;
