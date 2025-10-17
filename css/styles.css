@@ -79,8 +79,9 @@ body {
 	justify-content: flex-end;
 }
 
-#dual_direction_bar_chart_container{
+#dual_direction_bar_chart_container {
 	display: flex;
+	justify-content: space-between;
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 100px;
