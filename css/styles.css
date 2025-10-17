@@ -127,6 +127,22 @@ body {
 	justify-content: flex-end;
 }
 
+#parallel_coordinates_title {
+	display: flex;
+	justify-content: center;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 60px;
+}
+
+#parallel_coordinates_subtitle {
+	display: flex;
+	justify-content: space-evenly;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 60px;
+}
+
 #parallel_coordinates_container {
 	display: flex;
 	justify-content: space-between;
