@@ -155,6 +155,10 @@ body {
 	justify-content: flex-start;
 }
 
+#parallel_coordinates_2 {
+	justify-content: flex-end;
+}
+
 #metadata_container {
 	display: flex;
 	padding-left: 100px
