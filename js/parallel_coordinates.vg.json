@@ -45,14 +45,20 @@
       }
     },
     {
-      "mark": {"type": "line", "opacity": 0.4},
+      "params": [
+        {
+          "name": "hover",
+          "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
+        }
+      ],
+      "mark": {"type": "line"},
       "encoding": {
         "x": {"field": "key", "type": "nominal"},
         "y": {
           "field": "value",
           "type": "quantitative",
           "axis": {
-            "title": "Raw Value",
+            "title": "Amount (Thousand People)",
             "tickCount": 5,
             "labelColor": "#444",
             "titleColor": "#444",
@@ -62,25 +68,37 @@
         "color": {
           "field": "Country of birth",
           "type": "nominal",
-          "scale": {"range": ["#a6cee3", "#1f78b4", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#c363f2", "#72627a", "#d9d9d9"]},
+          "scale": {
+            "range": [
+              "#a6cee3",
+              "#1f78b4",
+              "#fb9a99",
+              "#e31a1c",
+              "#fdbf6f",
+              "#ff7f00",
+              "#c363f2",
+              "#72627a",
+              "#d9d9d9"
+            ]
+          },
           "legend": {"title": "Country of Birth"}
+        },
+        "opacity": {
+          "condition": {"param": "hover", "value": 1},
+          "value": 0.1
         },
         "detail": {"field": "index"},
         "tooltip": [
-          {"field": "Country of birth", "title": "Country"},
+          {"field": "Country of birth", "title": "Region"},
           {"field": "key", "title": "Category"},
-          {"field": "value", "title": "Value"}
+          {"field": "value", "title": "Amount (Thousand People)"}
         ]
       }
     },
     {
-      "encoding": {
-        "x": {"field": "key", "type": "nominal"}
-      },
+      "encoding": {"x": {"field": "key", "type": "nominal"}},
       "layer": [
-        {
-          "mark": {"type": "tick", "color": "#999", "size": 8}
-        }
+        {"mark": {"type": "tick", "color": "#999", "size": 8}}
       ]
     }
   ],
