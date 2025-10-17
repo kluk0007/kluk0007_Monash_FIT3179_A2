@@ -137,7 +137,7 @@ body {
 
 #parallel_coordinates_subtitles {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 60px;
