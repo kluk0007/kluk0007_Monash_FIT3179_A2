@@ -150,8 +150,11 @@ body {
 }
 
 #parallel_coordinates_subtitles {
-	display: flex;
-	justify-content: space-around;
+	display: grid;
+	grid-template-columns: 1fr 1fr; /* 2 columns */
+	grid-template-rows: auto auto;  /* title row + text row */
+	column-gap: 20px;
+	row-gap: 10px;
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 60px;
