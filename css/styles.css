@@ -126,3 +126,15 @@ body {
 #area_chart {
 	justify-content: flex-end;
 }
+
+#parallel_coordinates_container {
+	display: flex;
+	justify-content: space-between;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 50px;
+}
+
+#parallel_coordinates {
+	justify-content: flex-start;
+}
