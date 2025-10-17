@@ -81,7 +81,15 @@
               "#d9d9d9"
             ]
           },
-          "legend": {"title": "Country of Birth"}
+          "legend": {
+            "title": "Country of Birth",
+            "symbolSize": 50,
+            "labelLimit": 100,     
+            "rowPadding": 2,     
+            "columnPadding": 2,    
+            "columns": 1,          
+            "orient": "right"
+          }
         },
         "opacity": {
           "condition": {"param": "hover", "value": 1},
