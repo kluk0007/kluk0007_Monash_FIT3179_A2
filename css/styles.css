@@ -84,6 +84,8 @@ body {
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 100px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 #summary_dual_direction_bar_chart {
