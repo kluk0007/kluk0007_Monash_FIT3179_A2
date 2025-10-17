@@ -154,3 +154,15 @@ body {
 #parallel_coordinates {
 	justify-content: flex-start;
 }
+
+#metadata_container {
+	display: flex;
+	padding-left: 100px
+	padding-right: 100px;
+	padding-top: 60px;
+}
+
+#metadata_column {
+	width: 50%;
+	box-sizing: border-box;
+}
