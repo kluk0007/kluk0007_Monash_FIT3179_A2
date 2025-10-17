@@ -151,8 +151,8 @@ body {
 
 #parallel_coordinates_subtitles {
 	display: grid;
-	grid-template-columns: 1fr 1fr; /* 2 columns */
-	grid-template-rows: auto auto;  /* title row + text row */
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto; 
 	column-gap: 20px;
 	row-gap: 10px;
 	padding-left: 100px;
