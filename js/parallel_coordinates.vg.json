@@ -6,6 +6,9 @@
   "width": 600,
   "height": 400,
   "transform": [
+    {
+      "filter": "!(datum['Country of birth'] == 'Born in Australia' || datum['Country of birth'] == 'Born overseas')"
+    },
     {"window": [{"op": "count", "as": "index"}]},
     {
       "fold": [
@@ -21,23 +24,47 @@
         {"op": "max", "field": "value", "as": "max"}
       ],
       "groupby": ["key"]
-    },
-    {
-      "calculate": "(datum.value - datum.min) / (datum.max - datum.min)",
-      "as": "norm_val"
     }
   ],
   "layer": [
     {
       "mark": {"type": "rule", "color": "#ccc"},
-      "encoding": {"x": {"field": "key", "type": "nominal"}}
+      "encoding": {
+        "x": {
+          "field": "key",
+          "type": "nominal",
+          "axis": {
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "title": null,
+            "labelColor": "#444",
+            "tickColor": "#999",
+            "domain": true
+          }
+        }
+      }
     },
     {
       "mark": {"type": "line", "opacity": 0.4},
       "encoding": {
         "x": {"field": "key", "type": "nominal"},
-        "y": {"field": "norm_val", "type": "quantitative", "axis": null},
-        "color": {"field": "Country of birth", "type": "nominal"},
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "axis": {
+            "title": "Raw Value",
+            "tickCount": 5,
+            "labelColor": "#444",
+            "titleColor": "#444",
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "Country of birth",
+          "type": "nominal",
+          "scale": {"range": ["#a6cee3", "#1f78b4", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#c363f2", "#72627a", "#d9d9d9"]},
+          "legend": {"title": "Country of Birth"}
+        },
         "detail": {"field": "index"},
         "tooltip": [
           {"field": "Country of birth", "title": "Country"},
@@ -47,7 +74,9 @@
       }
     },
     {
-      "encoding": {"x": {"field": "key", "type": "nominal"}},
+      "encoding": {
+        "x": {"field": "key", "type": "nominal"}
+      },
       "layer": [
         {
           "mark": {"type": "tick", "color": "#999", "size": 8}
@@ -56,12 +85,6 @@
     }
   ],
   "config": {
-    "axisX": {
-      "domain": false,
-      "labelAngle": 0,
-      "tickColor": "#ccc",
-      "title": null
-    },
     "view": {"stroke": null}
   }
 }
