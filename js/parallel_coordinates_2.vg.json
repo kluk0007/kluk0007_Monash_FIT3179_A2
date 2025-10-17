@@ -3,7 +3,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/characteristics_of_employment_median_weekly_earnings.csv"
   },
-  "width": 300,
+  "width": 600,
   "height": 400,
   "transform": [
     {
@@ -80,7 +80,15 @@
               "#d9d9d9"
             ]
           },
-          "legend": {"title": "Country of Birth"}
+          "legend": {
+            "title": "Country of Birth",
+            "symbolSize": 50,
+            "labelLimit": 100,     
+            "rowPadding": 2,     
+            "columnPadding": 2,    
+            "columns": 1,          
+            "orient": "right"
+          }
         },
         "opacity": {
           "condition": {"param": "hover", "value": 1},
