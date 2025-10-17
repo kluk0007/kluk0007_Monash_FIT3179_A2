@@ -87,8 +87,7 @@ body {
 }
 
 #summary_dual_direction_bar_chart {
-	padding-left: 50px;
-	padding-right: 20px;
+	width: 300px;
 }
 
 #dual_direction_bar_chart{
