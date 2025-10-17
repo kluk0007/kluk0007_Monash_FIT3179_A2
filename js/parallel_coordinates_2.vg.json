@@ -1,0 +1,107 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/characteristics_of_employment_median_weekly_earnings.csv"
+  },
+  "width": 600,
+  "height": 400,
+  "transform": [
+    {
+      "filter": "!(datum['Country of birth'] == 'Born in Australia' || datum['Country of birth'] == 'Born overseas')"
+    },
+    {"window": [{"op": "count", "as": "index"}]},
+    {
+      "fold": [
+        "Total - Males",
+        "Total - Females"
+      ],
+      "as": ["key", "value"]
+    },
+    {
+      "joinaggregate": [
+        {"op": "min", "field": "value", "as": "min"},
+        {"op": "max", "field": "value", "as": "max"}
+      ],
+      "groupby": ["key"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#ccc"},
+      "encoding": {
+        "x": {
+          "field": "key",
+          "type": "nominal",
+          "axis": {
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "title": null,
+            "labelColor": "#444",
+            "tickColor": "#999",
+            "domain": true
+          }
+        }
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "hover",
+          "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
+        }
+      ],
+      "mark": {"type": "line"},
+      "encoding": {
+        "x": {"field": "key", "type": "nominal"},
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "axis": {
+            "title": "Amount (Thousand People)",
+            "tickCount": 5,
+            "labelColor": "#444",
+            "titleColor": "#444",
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "Country of birth",
+          "type": "nominal",
+          "scale": {
+            "range": [
+              "#a6cee3",
+              "#1f78b4",
+              "#fb9a99",
+              "#e31a1c",
+              "#fdbf6f",
+              "#ff7f00",
+              "#c363f2",
+              "#72627a",
+              "#d9d9d9"
+            ]
+          },
+          "legend": {"title": "Country of Birth"}
+        },
+        "opacity": {
+          "condition": {"param": "hover", "value": 1},
+          "value": 0.1
+        },
+        "detail": {"field": "index"},
+        "tooltip": [
+          {"field": "Country of birth", "title": "Region"},
+          {"field": "key", "title": "Category"},
+          {"field": "value", "title": "Amount (Thousand People)"}
+        ]
+      }
+    },
+    {
+      "encoding": {"x": {"field": "key", "type": "nominal"}},
+      "layer": [
+        {"mark": {"type": "tick", "color": "#999", "size": 8}}
+      ]
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}
