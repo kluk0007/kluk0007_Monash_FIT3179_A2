@@ -1,7 +1,7 @@
 {
   "title": "Proportions of Long-term Net Migration Volume for Each State by Month and Year",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
+  "width": 750,
   "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/js/ne_1_australia.topojson",
