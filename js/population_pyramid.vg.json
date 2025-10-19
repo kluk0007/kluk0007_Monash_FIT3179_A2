@@ -1,8 +1,6 @@
 {
   "title": "Overseas Migrant Arrivals by Age Group, Sex, and Year Period",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/overseas_migrant_arrivals_age_and_sex.csv"
   },
@@ -43,6 +41,8 @@
   "spacing": 0,
   "hconcat": [
     {
+      "width": 350,
+      "height": 450,
       "transform": [{"filter": {"field": "Gender", "equal": "Males"}}],
       "title": "Males",
       "mark": "bar",
@@ -60,11 +60,14 @@
     },
     {
       "width": 45,
+      "height": 450,
       "view": {"stroke": null},
       "mark": {"type": "text", "align": "center"},
       "encoding": {"y": {"field": "AgeGroup","sort":["0-9","10-19","20-29","30-39","40-49","50-59","60-69","70-79","80-89","90-99","100+"],"axis": null,"title": null},"text": {"field": "AgeGroup"}}
     },
     {
+      "width": 350,
+      "height": 450,
       "transform": [{"filter": {"field": "Gender", "equal": "Females"}}],
       "title": "Females",
       "mark": "bar",
