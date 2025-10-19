@@ -173,6 +173,11 @@ body {
 	padding-top: 60px;
 }
 
+#parallel_coordinates_subtitle_1 {
+	display: flex;
+	justify-content: center;
+}
+
 #parallel_coordinates {
 	justify-content: flex-start;
 }
