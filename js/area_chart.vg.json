@@ -78,7 +78,7 @@
         "type": "text",
         "align": "left",
         "baseline": "middle",
-        "dx": 100,
+        "dx": 60,
         "dy": 20,
         "fontSize": 20,
         "fontWeight": "bold"
