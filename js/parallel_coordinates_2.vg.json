@@ -1,4 +1,5 @@
 {
+  "title": "Median Weekly Earnings of Overseas Migrants by Sex in August 2021",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/characteristics_of_employment_median_weekly_earnings.csv"
@@ -98,7 +99,7 @@
         "tooltip": [
           {"field": "Country of birth", "title": "Region"},
           {"field": "key", "title": "Category"},
-          {"field": "value", "title": "Amount (Thousand People)"}
+          {"field": "value", "title": "Median Weekly Earnings (AUD)"}
         ]
       }
     },
