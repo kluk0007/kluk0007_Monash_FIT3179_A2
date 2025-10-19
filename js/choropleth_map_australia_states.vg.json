@@ -1,78 +1,90 @@
 {
   "title": "Proportions of Long-term Net Migration Volume for Each State by Month and Year",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 650,
+  "width": 750,
   "height": 450,
-  "projection": {
-    "type": "mercator",
-    "center": [132, -27],
-    "scale": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/js/ne_1_australia.topojson",
+    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+  },
+  "transform": [
+    {"filter": "datum.properties.admin == 'Australia'"},
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_overseas_migration_all_states_year_ending_transposed.csv"
+        },
+        "key": "States",
+        "fields": [
+          "Jun-14","Sep-14","Dec-14","Mar-15","Jun-15","Sep-15","Dec-15","Mar-16","Jun-16","Sep-16","Dec-16","Mar-17","Jun-17","Sep-17","Dec-17","Mar-18","Jun-18","Sep-18","Dec-18","Mar-19","Jun-19","Sep-19","Dec-19","Mar-20","Jun-20","Sep-20","Dec-20","Mar-21","Jun-21","Sep-21","Dec-21","Mar-22","Jun-22","Sep-22","Dec-22","Mar-23","Jun-23","Sep-23","Dec-23","Mar-24","Jun-24"
+        ]
+      }
     },
-  "params": [
-        {
-          "name": "monthIndex",
-          "value": 0,
-          "bind": {
-            "input": "range",
-            "min": 0,
-            "max": 40,
-            "step": 1,
-            "name": "Month-year Slider: "
-          }
-        }
+    {
+      "fold": [
+        "Jun-14","Sep-14","Dec-14","Mar-15","Jun-15","Sep-15","Dec-15","Mar-16","Jun-16","Sep-16","Dec-16","Mar-17","Jun-17","Sep-17","Dec-17","Mar-18","Jun-18","Sep-18","Dec-18","Mar-19","Jun-19","Sep-19","Dec-19","Mar-20","Jun-20","Sep-20","Dec-20","Mar-21","Jun-21","Sep-21","Dec-21","Mar-22","Jun-22","Sep-22","Dec-22","Mar-23","Jun-23","Sep-23","Dec-23","Mar-24","Jun-24"
       ],
+      "as": ["Month", "Value"]
+    },
+    {
+      "calculate": "['Jun-14','Sep-14','Dec-14','Mar-15','Jun-15','Sep-15','Dec-15','Mar-16','Jun-16','Sep-16','Dec-16','Mar-17','Jun-17','Sep-17','Dec-17','Mar-18','Jun-18','Sep-18','Dec-18','Mar-19','Jun-19','Sep-19','Dec-19','Mar-20','Jun-20','Sep-20','Dec-20','Mar-21','Jun-21','Sep-21','Dec-21','Mar-22','Jun-22','Sep-22','Dec-22','Mar-23','Jun-23','Sep-23','Dec-23','Mar-24','Jun-24'][monthIndex]",
+      "as": "month_label"
+    },
+    {
+      "calculate": "'Month-year: ' + datum.month_label",
+      "as": "month_year_text"
+    },
+    {
+      "filter": "datum.Month == datum.month_label"
+    },
+    {
+      "calculate": "abs(datum.Value)",
+      "as": "AbsValue"
+    },
+    {
+      "joinaggregate": [{"op": "sum", "field": "AbsValue", "as": "total_abs_value"}]
+    },
+    {
+      "calculate": "(datum.Value / datum.total_abs_value) * 100",
+      "as": "percent_value"
+    },
+    {
+      "calculate": "'Total long-term Net Migration (Thousand People): ' + datum.total_abs_value",
+      "as": "total_abs_value_text"
+    },
+    {
+      "calculate": "format(datum.percent_value, '.2f') + '%'",
+      "as": "percent_label"
+    },
+    {
+      "calculate": "format(datum.Value, '.1f') + 'K'",
+      "as": "ValueK"
+    }
+  ],
+  "params": [
+    {
+      "name": "monthIndex",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "name": "Month-year Slider: "
+      }
+    }
+  ],
+  "projection": {"type": "mercator"},
   "layer": [
     {
-      "data": {"graticule": {
-        "extent": [[110, -45], [155, -10]]
-      }},
-      "mark": {"type": "geoshape", "stroke": "#b3b3b3", "strokeWidth": 0.5}
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/js/ne_1_australia.topojson",
-        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
-      },
-      "transform": [
-        {"filter": "datum.properties.admin == 'Australia'"},
-        {
-          "lookup": "properties.name",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_overseas_migration_all_states_year_ending_transposed.csv"
-            },
-            "key": "States",
-            "fields": [
-              "Jun-14","Sep-14","Dec-14","Mar-15","Jun-15","Sep-15","Dec-15","Mar-16","Jun-16","Sep-16","Dec-16","Mar-17","Jun-17","Sep-17","Dec-17","Mar-18","Jun-18","Sep-18","Dec-18","Mar-19","Jun-19","Sep-19","Dec-19","Mar-20","Jun-20","Sep-20","Dec-20","Mar-21","Jun-21","Sep-21","Dec-21","Mar-22","Jun-22","Sep-22","Dec-22","Mar-23","Jun-23","Sep-23","Dec-23","Mar-24","Jun-24"
-            ]
-          }
-        },
-        {
-          "fold": [
-            "Jun-14","Sep-14","Dec-14","Mar-15","Jun-15","Sep-15","Dec-15","Mar-16","Jun-16","Sep-16","Dec-16","Mar-17","Jun-17","Sep-17","Dec-17","Mar-18","Jun-18","Sep-18","Dec-18","Mar-19","Jun-19","Sep-19","Dec-19","Mar-20","Jun-20","Sep-20","Dec-20","Mar-21","Jun-21","Sep-21","Dec-21","Mar-22","Jun-22","Sep-22","Dec-22","Mar-23","Jun-23","Sep-23","Dec-23","Mar-24","Jun-24"
-          ],
-          "as": ["Month", "Value"]
-        },
-        {
-          "calculate": "['Jun-14','Sep-14','Dec-14','Mar-15','Jun-15','Sep-15','Dec-15','Mar-16','Jun-16','Sep-16','Dec-16','Mar-17','Jun-17','Sep-17','Dec-17','Mar-18','Jun-18','Sep-18','Dec-18','Mar-19','Jun-19','Sep-19','Dec-19','Mar-20','Jun-20','Sep-20','Dec-20','Mar-21','Jun-21','Sep-21','Dec-21','Mar-22','Jun-22','Sep-22','Dec-22','Mar-23','Jun-23','Sep-23','Dec-23','Mar-24','Jun-24'][monthIndex]",
-          "as": "month_label"
-        },
-        {"calculate": "'Month-year: ' + datum.month_label", "as": "month_year_text"},
-        {"filter": "datum.Month == datum.month_label"},
-        {"calculate": "abs(datum.Value)", "as": "AbsValue"},
-        {"joinaggregate": [{"op": "sum", "field": "AbsValue", "as": "total_abs_value"}]},
-        {"calculate": "(datum.Value / datum.total_abs_value) * 100", "as": "percent_value"},
-        {"calculate": "'Total long-term Net Migration (Thousand People): ' + datum.total_abs_value", "as": "total_abs_value_text"},
-        {"calculate": "format(datum.percent_value, '.2f') + '%'", "as": "percent_label"},
-        {"calculate": "format(datum.Value, '.1f') + 'K'", "as": "ValueK"}
-      ],
       "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
         "color": {
           "field": "percent_value",
           "type": "quantitative",
           "title": "Percentage (%)",
-          "scale": {"range": ["#ff4a4a","#ffffff","#3da5ff"], "domain": [-70,0,70]}
+          "scale":{"range":["#ff4a4a","#ffffff","#3da5ff"],"domain":[-70,0,70]}
         },
         "tooltip": [
           {"field": "Month", "title": "Month-Year"},
@@ -83,31 +95,33 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": -300, "dy": 175, "fontSize": 14, "fontWeight": "bold"},
+      "mark": {"type": "text", "align": "left", "dx": -330, "dy": 175, "fontSize": 14, "fontWeight": "bold"},
       "encoding": {"text": {"field": "month_year_text"}}
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": -300, "dy": 200, "fontSize": 14, "fontWeight": "bold"},
+      "mark": {"type": "text", "align": "left", "dx": -330, "dy": 200, "fontSize": 14, "fontWeight": "bold"},
       "encoding": {"text": {"field": "total_abs_value_text"}}
     },
     {
       "data": {
         "values": [
-          {"monthIndex": 26, "text": "Net migration started to decrease due to COVID-19 border closure.", "dx": 0, "dy": -200},
-          {"monthIndex": 31, "text": "Net migration recovered after border reopening.", "dx": 0, "dy": -200}
+          {"monthIndex": 26, "text": "Net migration began to decrease due to COVID-19 border closure.", "dx": 0, "dy": -300},
+          {"monthIndex": 31, "text": "Net migration rebounded after border reopening.", "dx": 0, "dy": -100}
         ]
       },
-      "transform": [{"filter": "datum.monthIndex == monthIndex"}],
+      "transform": [
+        {"filter": "datum.monthIndex == monthIndex"}
+      ],
       "mark": {
         "type": "text",
         "align": "center",
-        "dx": 0,
-        "dy": -200,
         "fontSize": 16,
         "fontWeight": "bold",
         "color": "black"
       },
-      "encoding": {"text": {"field": "text"}}
+      "encoding": {
+        "text": {"field": "text"}
+      }
     }
   ]
 }
