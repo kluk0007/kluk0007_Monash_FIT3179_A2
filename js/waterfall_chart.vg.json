@@ -7,25 +7,29 @@
   "width": 700,
   "height": 450,
   "transform": [
-    {"window": [{"op": "lag", "field": "count", "as": "previous_count"}]},
-    {"window": [{"op": "lead", "field": "year", "as": "lead"}]},
     {
-      "calculate": "datum.lead === null ? datum.year : datum.lead", "as": "lead"
+      "window": [{"op": "lag", "field": "count", "as": "previous_count"}]},
+    {
+      "window": [{"op": "lead", "field": "year", "as": "lead"}]},
+    {
+      "calculate": "datum.lead === null ? datum.year : datum.lead", "as": "lead"},
+    {
+      "calculate": "isValid(datum.previous_count) ? datum.count - datum.previous_count : 0", "as": "amount"},
+    {
+      "calculate": "datum.count", "as": "sum"},
+    {
+      "calculate": "datum.previous_count", "as": "previous_sum"},
+    {
+      "calculate": "(datum.count + datum.previous_count) / 2", "as": "center"},
+    {
+      "filter": "isValid(datum.previous_count) && isValid(datum.lead)"},
+    {
+      "calculate": "format(datum.count, ',') + 'K'",
+      "as": "count_K"
     },
     {
-      "calculate": "isValid(datum.previous_count) ? datum.count - datum.previous_count : 0", "as": "amount"
-    },
-    {
-      "calculate": "datum.count", "as": "sum"
-    },
-    {
-      "calculate": "datum.previous_count", "as": "previous_sum"
-    },
-    {
-      "calculate": "(datum.count + datum.previous_count) / 2", "as": "center"
-    },
-    {
-    "filter": "isValid(datum.previous_count) && isValid(datum.lead)"
+      "calculate": "format(datum.amount, ',') + 'K'",
+      "as": "amount_K"
     }
   ],
   "encoding": {
@@ -48,111 +52,102 @@
         "y2": {"field": "count"},
         "color": {
           "condition": [
-            {
-              "test": "datum.year === '2000'",
-              "value": "#4287f5"
-            },
+            {"test": "datum.year === '2000'", "value": "#4287f5"},
             {"test": "datum.amount < 0", "value": "#f5424b"}
           ],
           "value": "#4287f5"
         },
         "tooltip": [
           {"field": "year", "type": "nominal", "title": "Year"},
-          {"field": "count", "type": "quantitative", "title": "Net Migration (Thousand People)"},
-          {"field": "amount", "type": "quantitative", "title": "Change from Previous Year (Thousand People)"}
+          {"field": "count_K", "type": "nominal", "title": "Net Migration (People)"},
+          {"field": "amount_K", "type": "nominal", "title": "Change from Previous Year (People)"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "dy": {"expr": "datum.amount >= 0 ? -4 : 4"}, "baseline": {"expr": "datum.amount >= 0 ? 'bottom' : 'top'"}},
-      "encoding": {
-        "y": {"field": "sum", "type": "quantitative"},
-        "text": {"field": "sum", "type": "nominal"}
-      }
-    },
-    {
-      "mark": {"type": "text", "fontWeight": "bold", "baseline": "middle"},
-      "encoding": {
-        "y": {"field": "center", "type": "quantitative"},
-        "text": {"field": "text_amount", "type": "nominal"},
-        "color": {
-          "condition": [
+      "data": {
+        "values": [
+          {
+            "year": "2008",
+            "y": 250,
+            "note": "2008: Global Financial Crisis",
+            "boxXOffset": -120,
+            "boxYOffset": -30
+          },
+          {
+            "year": "2020",
+            "y": 0,
+            "note": "2020: COVID-19 Border Closures",
+            "boxXOffset": -140,
+            "boxYOffset": -30
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "stroke": "#666",
+            "strokeWidth": 1,
+            "opacity": 0.8
+          },
+          "encoding": {
+            "x": {"field": "year", "type": "ordinal"},
+            "y": {"field": "y", "type": "quantitative"},
+            "x2": {"field": "year", "type": "ordinal", "offset": {"expr": "datum.boxXOffset"}},
+            "y2": {"field": "y", "type": "quantitative", "offset": {"expr": "datum.boxYOffset"}}
+          }
+        },
+        {
+          "mark": {
+            "type": "rect",
+            "color": "#bdbdbd",
+            "stroke": "#7b7b7b",
+            "strokeWidth": 0.8,
+            "cornerRadius": 4
+          },
+          "encoding": {
+            "x": {"field": "year", "type": "ordinal", "offset": {"expr": "datum.boxXOffset"}},
+            "y": {"field": "y", "type": "quantitative", "offset": {"expr": "datum.boxYOffset"}},
+            "x2": {"field": "year", "type": "ordinal", "offset": {"expr": "datum.boxXOffset + 120"}},
+            "y2": {"field": "y", "type": "quantitative", "offset": {"expr": "datum.boxYOffset - 30"}}
+          }
+        },
+        {
+          "transform": [
             {
-              "test": "datum.label === 'Begin' || datum.label === 'End'",
-              "value": "#725a30"
+              "lookup": "year",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_migration_australia.csv"
+                },
+                "key": "year",
+                "fields": ["count"]
+              }
+            },
+            {
+              "calculate": "datum.year == '2008' ? '2008: ' + datum.count + 'K People\\n(Global Financial Crisis)' : '2020: ' + datum.count + 'K People\\n(COVID-19 Border Closures)'",
+              "as": "custom_note"
             }
           ],
-          "value": "white"
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": {"expr": "datum.boxXOffset + 8"},
+            "dy": {"expr": "datum.boxYOffset - 22"},
+            "fontSize": 11,
+            "fontWeight": "bold",
+            "color": "#000000",
+            "lineBreak": "\\n"
+          },
+          "encoding": {
+            "x": {"field": "year", "type": "ordinal"},
+            "y": {"field": "y", "type": "quantitative"},
+            "text": {"field": "custom_note"}
+          }
         }
-      }
-    },
-    {
-  "data": {
-    "values": [
-      {
-        "year": "2008",
-        "y": 250,
-        "note": "2008: Global Financial Crisis",
-        "boxXOffset": -200,
-        "boxYOffset": -20
-      },
-      {
-        "year": "2020",
-        "y": 0,
-        "note": "2020: COVID-19 Border Closures",
-        "boxXOffset": -200,
-        "boxYOffset": -70
-      }
-    ]
-  },
-  "layer": [
-    {
-      "mark": {
-        "type": "rule",
-        "stroke": "#666",
-        "strokeWidth": 1,
-        "opacity": 0.8
-      },
-      "encoding": {
-        "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "y", "type": "quantitative"},
-        "x2": {"field": "year", "type": "ordinal", "offset": {"expr": "datum.boxXOffset"}},
-        "y2": {"field": "y", "type": "quantitative", "offset": {"expr": "datum.boxYOffset"}}
-      }
-    },
-    {
-      "mark": {
-        "type": "rect",
-        "color": "#bdbdbd",
-        "stroke": "#7b7b7b",
-        "strokeWidth": 0.8,
-        "cornerRadius": 4
-      },
-      "encoding": {
-        "x": {"field": "year", "type": "ordinal", "offset": {"expr": "datum.boxXOffset"}},
-        "y": {"field": "y", "type": "quantitative", "offset": {"expr": "datum.boxYOffset"}},
-        "x2": {"field": "year", "type": "ordinal", "offset": {"expr": "datum.boxXOffset + 120"}},
-        "y2": {"field": "y", "type": "quantitative", "offset": {"expr": "datum.boxYOffset - 30"}}
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": {"expr": "datum.boxXOffset + 8"},
-        "dy": {"expr": "datum.boxYOffset - 12"},
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "color": "#000000"
-      },
-      "encoding": {
-        "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "y", "type": "quantitative"},
-        "text": {"field": "note"}
-      }
+      ]
     }
-  ]
-}
   ],
   "config": {"text": {"fontWeight": "bold", "color": "#404040"}}
 }
