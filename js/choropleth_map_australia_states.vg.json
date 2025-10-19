@@ -105,8 +105,8 @@
     {
       "data": {
         "values": [
-          {"monthIndex": 26, "text": "Net migration began to decrease due to COVID-19 border closure.", "dx": 0, "dy": -200},
-          {"monthIndex": 31, "text": "Net migration rebounded after border reopening.", "dx": 0, "dy": -200}
+          {"monthIndex": 26, "text": "Net migration started to decrease due to COVID-19 border closure.", "dx": 0, "dy": -200},
+          {"monthIndex": 31, "text": "Net migration recovered after border reopening.", "dx": 0, "dy": -200}
         ]
       },
       "transform": [
