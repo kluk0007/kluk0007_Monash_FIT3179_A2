@@ -201,11 +201,19 @@ body {
 	justify-content: flex-end;
 }
 
-#conclusion_container {
-	justify-content: center;
-	padding-left: 100px;
-	padding-right: 100px;
-	padding-top: 60px;
+#conclusion_title {
+	display: flex;
+    justify-content: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 60px;
+}
+
+#conclusion_text {
+	display: flex;
+    justify-content: center;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 #metadata_container {
