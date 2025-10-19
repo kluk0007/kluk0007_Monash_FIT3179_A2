@@ -76,7 +76,7 @@
           {"field": "Year","title": "Year Period"},
           {"field": "Gender","title": "Gender"},
           {"field": "AgeGroup","title": "Age Group"},
-          {"field": "Count_K","title": "Overseas Migrant Arrivals (People)"}
+          {"field": "Count_K","title": "Overseas Migrant Arrivals (Thousand People)"}
         ]
       }
     }
