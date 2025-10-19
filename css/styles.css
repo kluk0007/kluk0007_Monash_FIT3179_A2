@@ -212,6 +212,7 @@ body {
 #conclusion_text {
 	display: flex;
     justify-content: center;
+	text-align: center;
     padding-left: 100px;
     padding-right: 100px;
 }
