@@ -42,7 +42,7 @@
     {
       "mark": "bar",
       "encoding": {
-        "x": {"field": "Country"},
+        "x": {"field": "Country", "axis": {"labelAngle": 0},
         "y": {
           "aggregate": "sum",
           "field": "Value",
