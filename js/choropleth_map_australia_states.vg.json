@@ -36,14 +36,18 @@
       "as": "month_year_text"
     },
     {
-      "filter": "datum.Month == datum.month_label"},
+      "filter": "datum.Month == datum.month_label"
+    },
     {
-      "calculate": "abs(datum.Value)", "as": "AbsValue"},
+      "calculate": "abs(datum.Value)",
+      "as": "AbsValue"
+    },
     {
       "joinaggregate": [{"op": "sum", "field": "AbsValue", "as": "total_abs_value"}]
     },
     {
-      "calculate": "(datum.Value / datum.total_abs_value) * 100", "as": "percent_value"
+      "calculate": "(datum.Value / datum.total_abs_value) * 100",
+      "as": "percent_value"
     },
     {
       "calculate": "'Total long-term Net Migration (Thousand People): ' + datum.total_abs_value",
@@ -67,7 +71,7 @@
         "min": 0,
         "max": 40,
         "step": 1,
-        "name": "Month-year Index: "
+        "name": "Month-year Slider: "
       }
     }
   ],
@@ -80,7 +84,7 @@
           "field": "percent_value",
           "type": "quantitative",
           "title": "Percentage (%)",
-          "scale": {"range":["#ff4a4a", "#ffffff", "#3da5ff"], "domain":[-70,0,70]}
+          "scale":{"range":["#ff4a4a","#ffffff","#3da5ff"],"domain":[-70,0,70]}
         },
         "tooltip": [
           {"field": "Month", "title": "Month-Year"},
@@ -91,32 +95,34 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": -340, "dy": 175, "fontSize": 14, "fontWeight": "bold"},
-      "encoding": {
-        "text": {"field": "month_year_text"}
-      }
+      "mark": {"type": "text", "align": "left", "dx": -380, "dy": 175, "fontSize": 14, "fontWeight": "bold"},
+      "encoding": {"text": {"field": "month_year_text"}}
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": -340, "dy": 200, "fontSize": 14, "fontWeight": "bold"},
-      "encoding": {
-        "text": {"field": "total_abs_value_text"}
-      }
+      "mark": {"type": "text", "align": "left", "dx": -380, "dy": 200, "fontSize": 14, "fontWeight": "bold"},
+      "encoding": {"text": {"field": "total_abs_value_text"}}
     },
     {
+      "data": {
+        "values": [
+          {"monthIndex": 26, "text": "Net migration began to decrease due to COVID-19 border closure.", "dx": 0, "dy": -200},
+          {"monthIndex": 31, "text": "Net migration rebounded after border reopening.", "dx": 0, "dy": -200}
+        ]
+      },
       "transform": [
-        {"filter": "monthIndex == 26"}
+        {"filter": "datum.monthIndex == monthIndex"}
       ],
       "mark": {
         "type": "text",
         "align": "center",
-        "fontSize": 16,
-        "fontWeight": "bold",
         "dx": 0,
         "dy": -200,
+        "fontSize": 16,
+        "fontWeight": "bold",
         "color": "black"
       },
       "encoding": {
-        "text": {"value": "Net migration began to decrease due to COVID-19 border closure."}
+        "text": {"field": "text"}
       }
     }
   ]
