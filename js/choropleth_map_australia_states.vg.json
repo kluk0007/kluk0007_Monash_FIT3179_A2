@@ -98,6 +98,23 @@
       "encoding": {
         "text": {"field": "total_abs_value_text"}
       }
+    },
+    {
+      "transform": [
+        {"filter": "monthIndex == 26"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "dx": 0,
+        "dy": -200,
+        "color": "black"
+      },
+      "encoding": {
+        "text": {"value": "Net migration began to decrease due to COVID-19 border closure."}
+      }
     }
   ]
 }
