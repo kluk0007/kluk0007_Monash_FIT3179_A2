@@ -40,7 +40,7 @@
     "y": {
       "aggregate": "sum", 
       "field": "Value", 
-      "scale": {"domain":[-50, 50]}, "title": "Net Migration (Thousand People)"},
+      "scale": {"domain":[-100, 100]}, "title": "Net Migration (Thousand People)"},
     "color": {
       "condition": [
         {
