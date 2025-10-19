@@ -178,6 +178,21 @@ body {
 	justify-content: center;
 }
 
+#parallel_coordinates_subtitle_2 {
+	display: flex;
+	justify-content: center;
+}
+
+#parallel_coordinates_text_1 {
+	display: flex;
+	justify-content: center;
+}
+
+#parallel_coordinates_text_2 {
+	display: flex;
+	justify-content: center;
+}
+
 #parallel_coordinates {
 	justify-content: flex-start;
 }
