@@ -1,5 +1,5 @@
 {
-  "title":"Net Migration by Top 5 Country of Birth from 2014 to 2024",
+  "title": "Net Migration by Top 5 Country of Birth from 2014 to 2024",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 450,
@@ -19,6 +19,10 @@
     },
     {
       "filter": "datum.Month == datum.month_label"
+    },
+    {
+      "calculate": "format(datum.Value, '.1f') + 'K'",
+      "as": "Value_K"
     }
   ],
   "params": [
@@ -38,14 +42,16 @@
   "encoding": {
     "x": {"field": "Country"},
     "y": {
-      "aggregate": "sum", 
-      "field": "Value", 
-      "scale": {"domain":[-100, 100]}, "title": "Net Migration (Thousand People)"},
+      "aggregate": "sum",
+      "field": "Value",
+      "scale": {"domain": [-100, 100]},
+      "title": "Net Migration (Thousand People)"
+    },
     "color": {
       "condition": [
         {
-        "test": "datum.Value < 0",
-        "value": "#f5424b"
+          "test": "datum.Value < 0",
+          "value": "#f5424b"
         }
       ],
       "value": "#4287f5"
@@ -53,7 +59,7 @@
     "tooltip": [
       {"field": "month_label", "title": "Month-Year"},
       {"field": "Country", "title": "Country of Birth"},
-      {"field": "Value", "title": "Net Migration (Thousand People)"}
+      {"field": "Value_K", "title": "Net Migration (People)"}
     ]
   }
 }
