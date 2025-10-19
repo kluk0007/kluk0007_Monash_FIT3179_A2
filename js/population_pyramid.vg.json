@@ -46,6 +46,10 @@
     },
     {
       "filter": "datum.Year == yearSelection"
+    },
+    {
+      "calculate": "format(datum.Count, '.1f') + 'K'",
+      "as": "Count_K"
     }
   ],
   "spacing": 0,
@@ -66,7 +70,7 @@
           "field": "Count",
           "title": "Overseas Migrant Arrivals (Thousand People)",
           "axis": {"format": "s"},
-          "scale": {"reverse": true, "domain":[0, 200]}
+          "scale": {"reverse": true, "domain": [0, 200]}
         },
         "color": {
           "field": "Gender",
@@ -74,25 +78,17 @@
           "legend": null
         },
         "tooltip": [
-          {"field": "Year", "type": "ordinal", "title": "Year Period"},
-          {"field": "Gender", "type": "nominal"},
-          {"field": "AgeGroup", "type": "ordinal", "title": "Age Group"},
-          {
-            "aggregate": "sum",
-            "field": "Count",
-            "type": "quantitative",
-            "title": "Overseas Migrant Arrivals (Thousand People)"
-          }
+          {"field": "Year", "title": "Year Period"},
+          {"field": "Gender", "title": "Gender"},
+          {"field": "AgeGroup", "title": "Age Group"},
+          {"field": "Count_K", "title": "Overseas Migrant Arrivals (Thousand People)"}
         ]
       }
     },
     {
       "width": 45,
       "view": {"stroke": null},
-      "mark": {
-        "type": "text",
-        "align": "center"
-      },
+      "mark": {"type": "text", "align": "center"},
       "encoding": {
         "y": {
           "field": "AgeGroup",
@@ -127,15 +123,10 @@
           "legend": null
         },
         "tooltip": [
-          {"field": "Year", "type": "ordinal", "title": "Year Period"},
-          {"field": "Gender", "type": "nominal"},
-          {"field": "AgeGroup", "type": "ordinal", "title": "Age Group"},
-          {
-            "aggregate": "sum",
-            "field": "Count",
-            "type": "quantitative",
-            "title": "Overseas Migrant Arrivals (Thousand People)"
-          }
+          {"field": "Year", "title": "Year Period"},
+          {"field": "Gender", "title": "Gender"},
+          {"field": "AgeGroup", "title": "Age Group"},
+          {"field": "Count_K", "title": "Overseas Migrant Arrivals (Thousand People)"}
         ]
       }
     }
