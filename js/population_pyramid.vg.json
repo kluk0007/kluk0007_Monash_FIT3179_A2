@@ -68,7 +68,7 @@
         "x": {
           "aggregate": "sum",
           "field": "Count",
-          "title": "Overseas Migrant Arrivals (Thousand People)",
+          "title": "Overseas Migrant Arrivals (People)",
           "axis": {"format": "s"},
           "scale": {"reverse": true, "domain": [0, 200]}
         },
@@ -113,7 +113,7 @@
         "x": {
           "aggregate": "sum",
           "field": "Count",
-          "title": "Overseas Migrant Arrivals (Thousand People)",
+          "title": "Overseas Migrant Arrivals (People)",
           "scale": {"domain": [0, 200]},
           "axis": {"format": "s"}
         },
