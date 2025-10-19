@@ -68,6 +68,8 @@ body {
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 100px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 #summary_choropleth_map {
