@@ -1,7 +1,7 @@
 {
   "title": "Net Migration by Top 5 Country of Birth from 2014 to 2024",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
+  "width": 650,
   "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/net_overseas_migration_top_5_countries_of_birth_transposed.csv"
