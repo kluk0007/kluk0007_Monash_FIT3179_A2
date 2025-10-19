@@ -74,8 +74,6 @@ body {
 
 #summary_choropleth_map {
 	width: 300px;
-	padding-left: 50px;
-	padding-right: 20px;
 }
 
 #choropleth_map {
