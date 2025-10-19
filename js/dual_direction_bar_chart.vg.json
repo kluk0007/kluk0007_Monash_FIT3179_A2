@@ -51,8 +51,8 @@
       "value": "#4287f5"
     },
     "tooltip": [
-      {"field": "Country", "title": "Country of Birth"},
       {"field": "month_label", "title": "Month-Year"},
+      {"field": "Country", "title": "Country of Birth"},
       {"field": "Value", "title": "Net Migration (Thousand People)"}
     ]
   }
