@@ -41,8 +41,8 @@
   "spacing": 0,
   "hconcat": [
     {
-      "width": 350,
-      "height": 450,
+      "width": 300,
+      "height": 200,
       "transform": [{"filter": {"field": "Gender", "equal": "Males"}}],
       "title": "Males",
       "mark": "bar",
@@ -59,15 +59,15 @@
       }
     },
     {
-      "width": 45,
-      "height": 450,
+      "width": 40,
+      "height": 200,
       "view": {"stroke": null},
       "mark": {"type": "text", "align": "center"},
       "encoding": {"y": {"field": "AgeGroup","sort":["0-9","10-19","20-29","30-39","40-49","50-59","60-69","70-79","80-89","90-99","100+"],"axis": null,"title": null},"text": {"field": "AgeGroup"}}
     },
     {
-      "width": 350,
-      "height": 450,
+      "width": 300,
+      "height": 200,
       "transform": [{"filter": {"field": "Gender", "equal": "Females"}}],
       "title": "Females",
       "mark": "bar",
