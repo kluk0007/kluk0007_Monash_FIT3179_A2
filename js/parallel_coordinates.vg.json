@@ -105,6 +105,29 @@
       "layer": [
         {"mark": {"type": "tick", "color": "#999", "size": 8}}
       ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "shortKey": "Employees",
+            "value": 1200,
+            "note": "Most employed people are Employees"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": -100,
+        "dy": -120,
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {"field": "note"}
+      }
     }
   ],
   "config": {"view": {"stroke": null}}
