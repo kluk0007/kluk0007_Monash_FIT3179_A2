@@ -1,7 +1,7 @@
 {
   "title": "Overseas Migrant Arrivals by Visa Grouping by Year Period",
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 475,
+  "width": 525,
   "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/overseas_migrant_arrivals_by_visa_and_citizenship_groups.csv"
