@@ -201,11 +201,20 @@ body {
 	justify-content: flex-end;
 }
 
+#conclusion_container {
+	display: flex;
+	justify-content: center;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 60px;
+}
+
 #metadata_container {
 	display: flex;
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 60px;
+	margin-top: 0px;
 }
 
 #metadata_container p {
