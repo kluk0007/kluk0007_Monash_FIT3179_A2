@@ -1,4 +1,5 @@
 {
+  "title": "Amount of Employed Overseas Migrants by Employment Form and Country of Birth in 2021",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
     "url": "https://raw.githubusercontent.com/kluk0007/kluk0007_Monash_FIT3179_A2/refs/heads/main/data/characteristics_of_employment.csv"
@@ -19,11 +20,15 @@
       "as": ["key", "value"]
     },
     {
+      "calculate": "datum.key == 'Total - Employees' ? 'Employees' : datum.key == 'Total - Independent Contractor' ? 'Independent Contractors' : 'Other Business Operators'",
+      "as": "shortKey"
+    },
+    {
       "joinaggregate": [
         {"op": "min", "field": "value", "as": "min"},
         {"op": "max", "field": "value", "as": "max"}
       ],
-      "groupby": ["key"]
+      "groupby": ["shortKey"]
     }
   ],
   "layer": [
@@ -31,7 +36,7 @@
       "mark": {"type": "rule", "color": "#ccc"},
       "encoding": {
         "x": {
-          "field": "key",
+          "field": "shortKey",
           "type": "nominal",
           "axis": {
             "labelAngle": 0,
@@ -53,7 +58,7 @@
       ],
       "mark": {"type": "line"},
       "encoding": {
-        "x": {"field": "key", "type": "nominal"},
+        "x": {"field": "shortKey", "type": "nominal"},
         "y": {
           "field": "value",
           "type": "quantitative",
@@ -70,24 +75,16 @@
           "type": "nominal",
           "scale": {
             "range": [
-              "#a6cee3",
-              "#1f78b4",
-              "#fb9a99",
-              "#e31a1c",
-              "#fdbf6f",
-              "#ff7f00",
-              "#c363f2",
-              "#72627a",
-              "#d9d9d9"
+              "#a6cee3","#1f78b4","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#c363f2","#72627a","#d9d9d9"
             ]
           },
           "legend": {
             "title": "Country of Birth",
             "symbolSize": 50,
-            "labelLimit": 100,     
-            "rowPadding": 2,     
-            "columnPadding": 2,    
-            "columns": 1,          
+            "labelLimit": 100,
+            "rowPadding": 2,
+            "columnPadding": 2,
+            "columns": 1,
             "orient": "right"
           }
         },
@@ -98,19 +95,17 @@
         "detail": {"field": "index"},
         "tooltip": [
           {"field": "Country of birth", "title": "Region"},
-          {"field": "key", "title": "Category"},
+          {"field": "shortKey", "title": "Category"},
           {"field": "value", "title": "Amount (Thousand People)"}
         ]
       }
     },
     {
-      "encoding": {"x": {"field": "key", "type": "nominal"}},
+      "encoding": {"x": {"field": "shortKey", "type": "nominal"}},
       "layer": [
         {"mark": {"type": "tick", "color": "#999", "size": 8}}
       ]
     }
   ],
-  "config": {
-    "view": {"stroke": null}
-  }
+  "config": {"view": {"stroke": null}}
 }
