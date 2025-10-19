@@ -8,21 +8,29 @@
   "height": 450,
   "transform": [
     {
-      "window": [{"op": "lag", "field": "count", "as": "previous_count"}]},
+      "window": [{"op": "lag", "field": "count", "as": "previous_count"}]
+    },
     {
-      "window": [{"op": "lead", "field": "year", "as": "lead"}]},
+      "window": [{"op": "lead", "field": "year", "as": "lead"}]
+    },
     {
-      "calculate": "datum.lead === null ? datum.year : datum.lead", "as": "lead"},
+      "calculate": "datum.lead === null ? datum.year : datum.lead", "as": "lead"
+    },
     {
-      "calculate": "isValid(datum.previous_count) ? datum.count - datum.previous_count : 0", "as": "amount"},
+      "calculate": "isValid(datum.previous_count) ? datum.count - datum.previous_count : 0", "as": "amount"
+    },
     {
-      "calculate": "datum.count", "as": "sum"},
+      "calculate": "datum.count", "as": "sum"
+    },
     {
-      "calculate": "datum.previous_count", "as": "previous_sum"},
+      "calculate": "datum.previous_count", "as": "previous_sum"
+    },
     {
-      "calculate": "(datum.count + datum.previous_count) / 2", "as": "center"},
+      "calculate": "(datum.count + datum.previous_count) / 2", "as": "center"
+    },
     {
-      "filter": "isValid(datum.previous_count) && isValid(datum.lead)"},
+      "filter": "isValid(datum.previous_count) && isValid(datum.lead)"
+    },
     {
       "calculate": "format(datum.count, ',') + 'K'",
       "as": "count_K"
