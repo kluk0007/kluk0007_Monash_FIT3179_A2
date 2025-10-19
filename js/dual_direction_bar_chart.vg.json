@@ -34,32 +34,46 @@
         "min": 0,
         "max": 40,
         "step": 1,
-        "name": "Month-year Index: "
+        "name": "Month-year Slider: "
       }
     }
   ],
-  "mark": "bar",
-  "encoding": {
-    "x": {"field": "Country"},
-    "y": {
-      "aggregate": "sum",
-      "field": "Value",
-      "scale": {"domain": [-100, 100]},
-      "title": "Net Migration (Thousand People)"
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "Country"},
+        "y": {
+          "aggregate": "sum",
+          "field": "Value",
+          "scale": {"domain": [-100, 100]},
+          "title": "Net Migration (Thousand People)"
+        },
+        "color": {
+          "condition": [
+            {"test": "datum.Value < 0", "value": "#f5424b"}
+          ],
+          "value": "#4287f5"
+        },
+        "tooltip": [
+          {"field": "month_label", "title": "Month-Year"},
+          {"field": "Country", "title": "Country of Birth"},
+          {"field": "Value", "title": "Net Migration (Thousand People)"}
+        ]
+      }
     },
-    "color": {
-      "condition": [
-        {
-          "test": "datum.Value < 0",
-          "value": "#f5424b"
-        }
-      ],
-      "value": "#4287f5"
-    },
-    "tooltip": [
-      {"field": "month_label", "title": "Month-Year"},
-      {"field": "Country", "title": "Country of Birth"},
-      {"field": "Value", "title": "Net Migration (Thousand People)"}
-    ]
-  }
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "color": "#333",
+        "x": 600,
+        "y": 30
+      },
+      "encoding": {
+        "text": {"field": "month_label"}
+      }
+    }
+  ]
 }
