@@ -1,5 +1,5 @@
 {
-  "title": "Proportions of Net Migration Volume for Each State by Month and Year",
+  "title": "Proportions of Long-term Net Migration Volume for Each State by Month and Year",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 450,
