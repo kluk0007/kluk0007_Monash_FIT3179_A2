@@ -34,7 +34,6 @@
         ]
       }
     },
-    
     {
       "joinaggregate": [
         {
@@ -46,29 +45,49 @@
       "groupby": ["YearPeriod"]
     }
   ],
-  "mark": {"type": "area", "line": true, "point": true},
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "temporal",
-      "title": "Year (End of Annual Period)",
-      "timeUnit": "year"
+  "layer": [
+    {
+      "mark": {"type": "area", "line": true, "point": true},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "title": "Year (End of Annual Period)",
+          "timeUnit": "year"
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Value",
+          "title": "Number of Arrivals (Thousand People)"
+        },
+        "color": {
+          "field": "VisaGroupDisplay",
+          "type": "nominal",
+          "title": "Visa Group"
+        },
+        "tooltip": [
+          {"field": "Visa groupings", "title": "Visa Group Display"},
+          {"field": "YearPeriod", "title": " Year Period"},
+          {"field": "TotalValue", "type": "quantitative", "title": "Total Arrivals (All Groups, Thousand People)"},
+          {"field": "Value", "type": "quantitative", "title": "Arrivals (Thousand People)"}
+        ]
+      }
     },
-    "y": {
-      "aggregate": "sum",
-      "field": "Value",
-      "title": "Number of Arrivals (Thousand People)"
-    },
-    "color": {
-      "field": "VisaGroupDisplay",
-      "type": "nominal",
-      "title": "Visa Group"
-    },
-    "tooltip": [
-      {"field": "Visa groupings", "title": "Visa Group Display"},
-      {"field": "YearPeriod", "title": " Year Period"},
-      {"field": "TotalValue", "type": "quantitative", "title": "Total Arrivals (All Groups, Thousand People)"},
-      {"field": "Value", "type": "quantitative", "title": "Arrivals (Thousand People)"}
-    ]
-  }
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 100,
+        "dy": 20,
+        "fontSize": 20,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {"value": 0}, 
+        "y": {"value": 300}, 
+        "text": {"value": "Most arrived migrants held temporary visas"}
+      }
+    }
+  ]
 }
