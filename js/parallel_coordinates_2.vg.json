@@ -58,7 +58,7 @@
           "field": "value",
           "type": "quantitative",
           "axis": {
-            "title": "Amount (Thousand People)",
+            "title": "Median Weekly Earnings (AUD)",
             "tickCount": 5,
             "labelColor": "#444",
             "titleColor": "#444",
