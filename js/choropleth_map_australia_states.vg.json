@@ -95,11 +95,11 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": -380, "dy": 175, "fontSize": 14, "fontWeight": "bold"},
+      "mark": {"type": "text", "align": "left", "dx": -350, "dy": 175, "fontSize": 14, "fontWeight": "bold"},
       "encoding": {"text": {"field": "month_year_text"}}
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": -380, "dy": 200, "fontSize": 14, "fontWeight": "bold"},
+      "mark": {"type": "text", "align": "left", "dx": -350, "dy": 200, "fontSize": 14, "fontWeight": "bold"},
       "encoding": {"text": {"field": "total_abs_value_text"}}
     },
     {
