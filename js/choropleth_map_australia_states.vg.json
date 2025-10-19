@@ -52,6 +52,10 @@
     {
       "calculate": "format(datum.percent_value, '.2f') + '%'",
       "as": "percent_label"
+    },
+    {
+      "calculate": "format(datum.Value, '.1f') + 'K'",
+      "as": "ValueK"
     }
   ],
   "params": [
@@ -81,9 +85,8 @@
         "tooltip": [
           {"field": "Month", "title": "Month-Year"},
           {"field": "properties.name", "title": "State"},
-          {"field": "Value", "title": "Net Migration (Thousand People)"},
-          {"field": "percent_label", "title": "Percentage of Total Migration Volume"
-          }
+          {"field": "ValueK", "title": "Net Migration (People)"},
+          {"field": "percent_label", "title": "Percentage of Total Migration"}
         ]
       }
     },
